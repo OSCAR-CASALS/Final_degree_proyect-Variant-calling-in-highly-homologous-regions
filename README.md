@@ -1,11 +1,11 @@
-# Variant Calling on genes with high homology to pseudogenes
+# Variant calling in highly homologous regions
 This pipeline is designed to perform variant calling on regions with high homology to a pseudogene.
 
-# Required Input
+## Required Input
 This pipeline requires:
   - A reference genome.
   - A gff3 annotation of the reference genome.
   - A fastq file with the reads we want to do variant calling on.
 
-# How does it work?
+## How does it work?
 First the pipeline will create a blast database 
