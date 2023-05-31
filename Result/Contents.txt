@@ -1,0 +1,1 @@
+This folder contains the resulting vcf of all the tests performed on the Final Degree Project.
