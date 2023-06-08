@@ -25,7 +25,7 @@ To run this pipeline the following libraries are required:
   - ARGPARSE
   - PICARD
  
- This github already provides a YML file called _Main_env.yml_ with the conda environment that was used to run this script when it was tested.
+ This github already provides a YML file called _main_env.yml_ with the conda environment that was used to run this script when it was tested.
  
  ## REFERENCES
 Pink, Ryan Charles, Kate Wicks, Daniel Paul Caley, Emma Kathleen Punch, Laura Jacobs, and David Raul Francisco Carter. “Pseudogenes: Pseudo-Functional or Key Regulators in Health and Disease?” RNA 17, no. 5 (May 2011): 792–98. https://doi.org/10.1261/rna.2658311.
