@@ -10,4 +10,5 @@ This pipeline requires:
 ## How to use it?
 All the steps the pipeline have been divided in 4different python scripts that can be run individually or together with Execute_all.py. If each script is going to be run separately the next steps must be followed:
 
-  - **STEP_01:** The first script to be run is _Init.sh_ since it will create the Blast database and the pseudogenes fasta file 
+  - **STEP_01:** The first script to be run is _Init.sh_ since it will create the genes Blast database and the pseudogenes fasta file required tu run the rest of the pipeline.
+  - ****
