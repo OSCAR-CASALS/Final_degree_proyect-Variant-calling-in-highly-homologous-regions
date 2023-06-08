@@ -23,6 +23,7 @@ To run this pipeline the following libraries are required:
   - BEDTOOLS
   - BLAST+
   - ARGPARSE
+  - PICARD
  
  This github already provides a YML file called _Main_env.yml_ with the conda environment that was used to run this script when it was tested.
  
