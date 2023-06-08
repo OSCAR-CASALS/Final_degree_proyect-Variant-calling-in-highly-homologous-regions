@@ -15,6 +15,8 @@ All the steps the pipeline have been divided in 4 different python scripts that 
   - **STEP_03:** With the bed files created _Find_variants.py_ must be run in order to create a vcf file with all the mutations detected in regions of high homology.
   - **STEP_04:** Once the last step has finished _Find_hom_zones.py_ can be run to add the 'High_Homology_Region' flag to any variant in a zone that presented high similarity with a pseudogene.
 
+Either the pipeline is run by **Execute_all.py** or executing each step separately all the python and bash scripts in this github must be in the same directory.
+
 ## Dependencies
 To run this pipeline the following libraries are required:
   - GATK
