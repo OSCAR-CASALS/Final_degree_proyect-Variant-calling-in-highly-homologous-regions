@@ -19,6 +19,13 @@ All the steps the pipeline have been divided in 4 different python scripts that 
 
 Either the pipeline is run by **Execute_all.py** or executing each step separately all the python and bash scripts in this GitHub must be in the same directory.
 
+### Example
+Here there is an example of how to use the pipeline:
+  -  First _Init.sh_ is executed:
+```
+Init.sh 
+```       
+
 ## Dependencies
 To run this pipeline the following libraries are required:
   - GATK
