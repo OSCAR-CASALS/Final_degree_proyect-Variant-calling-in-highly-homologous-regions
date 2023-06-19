@@ -59,7 +59,7 @@ for rea in range(0, len(realign_files)):#Variant calling on each ploidy
     os.system('bedtools bamtofastq -i ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam ' + '-fq ' + TEMP_FASTA)#Transforming the regions extracted into fasta format.
 
     os.system('rm ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam')
-    #Masking the reference genome and aligning our reads to it.
+    print('Masking the reference genome and aligning our reads to it...')
     out_c = TENPORARY_DICT + '/' + 'Masked_' + ploidy
     os.system('mkdir ' + out_c)
     TEMPORARY_FILE_MASKED = TENPORARY_DICT + '/' + 'Temporary_masked_ploidy_' + ploidy
@@ -68,10 +68,10 @@ for rea in range(0, len(realign_files)):#Variant calling on each ploidy
     os.system('bwa mem -M -R ' + RG_group + ' ' + '-t ' + args.threads + ' ' + out_c + '/Masked_gen.fasta' + ' ' +  TEMP_FASTA + ' | samtools view -hb | samtools sort -@ ' + args.threads + ' > ' + MASKED_AL)
     os.system('samtools quickcheck ' + MASKED_AL)
     os.system('samtools index ' + MASKED_AL)
-    #Haplotype caller
+    print('Haplotype caller...')
     HAPL_creation = out_c + '/Hapl_' + ploidy + '.g.vcf'
     os.system('gatk HaplotypeCaller -R ' + out_c + '/Masked_gen.fasta ' + '-I ' + MASKED_AL + ' -ERC GVCF --dont-use-soft-clipped-bases -O ' + HAPL_creation + ' -ploidy ' + ploidy)
-    #Genotyping
+    print('Genotyping...')
     GEN_out = TENPORARY_DICT + '/Genotyping_' + ploidy + '.vcf'
     os.system('gatk GenotypeGVCFs -R ' + out_c + '/Masked_gen.fasta ' + '-O ' + GEN_out + ' --variant ' + HAPL_creation + ' -ploidy ' + ploidy + ' -stand-call-conf ' + args.Quality)
     #Removing files
