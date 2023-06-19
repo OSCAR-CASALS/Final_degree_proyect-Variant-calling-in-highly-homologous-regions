@@ -21,10 +21,10 @@ Either the pipeline is run by **Execute_all.py** or executing each step separate
 
 ### Example
 Here there is an example of how to use the pipeline:
-  -  First _Init.sh_ is executed:
+  - If the pipeline is going to be executed in one go, then the only script that must be run is Execute_all.py.
 ```
-Init.sh 
-```       
+Execute_all.py 
+```
 
 ## Dependencies
 To run this pipeline the following libraries are required:
