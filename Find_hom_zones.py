@@ -12,7 +12,7 @@ args = parser.parse_args()
 hom_regions = []
 directory_align_to = os.listdir(args.Al)
 al_to_dir = args.Al
-
+#Extracting from the align_to file the high_homology_regions.
 for bed in directory_align_to:
     b_file = open(al_to_dir + '/' + bed, 'r')
     line = b_file.readline()
@@ -23,5 +23,5 @@ for bed in directory_align_to:
     b_file.close()
 
 vcfs = args.VCF
-
+#Adding the flag.
 Flagg_high_homology_regions(vcfs, hom_regions, args.Res)
