@@ -30,10 +30,10 @@ print('Aligning to reference genome...')
 os.system('bwa mem -M ' + '-R ' + RG_group + ' -t ' + args.threads + ' ' + args.REFERENCE + ' ' + args.input + ' | samtools view -hb | samtools sort -@ ' + args.threads + ' > ' + TENPORARY_DICT + '/basic_al.bam')
 
 print('Checking if the bam, file is correct...')
-os.system('samtools quickcheck ' + TENPORARY_DICT + '/basic_al.bam')
+os.system('samtools quickcheck ' + TENPORARY_DICT + '/basic_al.bam')#Checking everything in the alignment is in order.
 
 print('Finished checking', 'Indexing...', sep = '\n')
-os.system('samtools index ' + TENPORARY_DICT + '/basic_al.bam')
+os.system('samtools index ' + TENPORARY_DICT + '/basic_al.bam')#Indexing the alignment
 
 
 def extract_ploidy(name):
@@ -49,17 +49,17 @@ realign_files = sorted(os.listdir(directory_realign), key=extract_ploidy)
 directory_align_to = args.Align_to
 align_to_files = sorted(os.listdir(directory_align_to), key=extract_ploidy)
 
-for rea in range(0, len(realign_files)):
+for rea in range(0, len(realign_files)):#Variant calling on each ploidy
     al_to = directory_align_to + '/' + align_to_files[rea]
     real_to = directory_realign + '/' + realign_files[rea]
     ploidy = str(extract_ploidy(real_to))
     print('Ploidy', ploidy)
-    os.system('samtools view -h -L ' + real_to + ' ' + TENPORARY_DICT + '/basic_al.bam' + ' | ' + 'samtools view -hb | samtools sort -n -@ ' + args.threads + ' > ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam')
+    os.system('samtools view -h -L ' + real_to + ' ' + TENPORARY_DICT + '/basic_al.bam' + ' | ' + 'samtools view -hb | samtools sort -n -@ ' + args.threads + ' > ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam')#Extracting the regions of the realign_to bed file.
     TEMP_FASTA = TENPORARY_DICT + '/' + 'ploidy_' + ploidy + '.fasta'
-    os.system('bedtools bamtofastq -i ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam ' + '-fq ' + TEMP_FASTA)
-    #sys.exit()
+    os.system('bedtools bamtofastq -i ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam ' + '-fq ' + TEMP_FASTA)#Transforming the regions extracted into fasta format.
+
     os.system('rm ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam')
-    #Masking
+    #Masking the reference genome and aligning our reads to it.
     out_c = TENPORARY_DICT + '/' + 'Masked_' + ploidy
     os.system('mkdir ' + out_c)
     TEMPORARY_FILE_MASKED = TENPORARY_DICT + '/' + 'Temporary_masked_ploidy_' + ploidy
