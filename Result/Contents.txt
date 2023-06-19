@@ -1,2 +1,0 @@
-This folder contains the different vcf fies obtained from the FInal degree project. These are:
-- 
