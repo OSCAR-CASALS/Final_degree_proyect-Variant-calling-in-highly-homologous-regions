@@ -35,7 +35,7 @@ python Create_beds.py -fp Pseudogene_fasta_file -bl blast_database -OM Align_to_
 ```
 
 ```
-python Find_variants.py 
+python Find_variants.py -I reads.fastq -ID ID_of_the_sample -SM Sample_name -t Number_of_threads -O Output.vcf -real Realign_bed_files_directory -Al_to Align_to_bed_files_directory -R reference.fasta -Qual quality_threshold_for_variants
 ```
 
 ## Dependencies
