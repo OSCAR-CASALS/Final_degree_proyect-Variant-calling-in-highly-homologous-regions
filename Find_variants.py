@@ -4,11 +4,11 @@ import argparse
 from Functions import Flagg_high_homology_regions
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-I', '--input', help = 'Samples where we want to locate variants in pseudogenes (Only one fasta)')
+parser.add_argument('-I', '--input', help = 'Reads where we want to locate variants in pseudogenes (Only one fasta)')
 parser.add_argument('-ID', '--ID_RG_group', help = 'ID of the sample to be used')
 parser.add_argument('-SM', '--SM_RG_group', help = 'SM of the sample to be used')
 parser.add_argument('-t', '--threads', help = 'Number of threads that will be used.')
-parser.add_argument('-O', '--output', help = 'Path were the gvcf files will be created.')
+parser.add_argument('-O', '--output', help = 'VCF output name.')
 parser.add_argument('-real', '--realign_bed', help = 'Directory where the realign files are.')
 parser.add_argument('-Al_to', '--Align_to', help = 'Directory where the align to beds are.')
 parser.add_argument('-R', '--REFERENCE', help = 'Reference genome.')
