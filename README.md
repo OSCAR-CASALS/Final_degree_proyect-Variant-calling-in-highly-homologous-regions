@@ -23,7 +23,11 @@ Either the pipeline is run by **Execute_all.py** or executing each step separate
 Here there is an example of how to use the pipeline:
   - If the pipeline is going to be executed in one go, then the only script that must be run is Execute_all.py.
 ```
-Execute_all.py 
+Execute_all.py -R reference_genome.fasta -A annotation.gff3 -I reads.fastq -ID ID_of_the_sample -SM Sample_name -O output.vcf -t number_of_threads -Qual quality_threshold_for_variants -Id_threshold Maximum_identity_threshold_a_region_can_have_to_a_pseudogene -pl maximum_ploidy
+```
+  - If instead the pipeline is going to be executed step by step, here there is an example on how it would be done:
+```
+Init.sh 
 ```
 
 ## Dependencies
