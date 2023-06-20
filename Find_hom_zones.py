@@ -4,9 +4,9 @@ import argparse
 from Functions import Flagg_high_homology_regions
 
 parser = argparse.ArgumentParser()
-parser.add_argument('VCF', help = 'VCF file directory')
+parser.add_argument('VCF', help = 'VCF files')
 parser.add_argument('Al', help = 'Align_to bed file directory.')
-parser.add_argument('Res', help = 'Prefix of the generated vcf files.')
+parser.add_argument('Res', help = 'Output vcf file.')
 args = parser.parse_args()
 
 hom_regions = []
