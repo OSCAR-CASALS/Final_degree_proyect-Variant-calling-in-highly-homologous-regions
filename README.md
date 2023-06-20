@@ -38,7 +38,10 @@ python Create_beds.py -fp Pseudogene_fasta_file -bl blast_database -OM Align_to_
 python Find_variants.py -I reads.fastq -ID ID_of_the_sample -SM Sample_name -t Number_of_threads -O Output.vcf -real Realign_bed_files_directory -Al_to Align_to_bed_files_directory -R reference.fasta -Qual quality_threshold_for_variants
 ```
 
-  - Additionally if a boxplot showing the quality of the variants is going to be made the script 
+  - Additionally if a boxplot showing the quality of the variants is going to be made the pyhton script Plot_results.py must be run.
+```
+python Plot_results.py vcf_file.vcf size_of_the_groups_of_variants title_of_the_graph
+```
 
 ## Dependencies
 To run this pipeline the following libraries are required:
