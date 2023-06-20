@@ -14,6 +14,7 @@ All the steps the pipeline have been divided in 4 different python scripts that 
   - **STEP_02:** Once the necessary files are created, _Create_beds.py_ must be executed to make the Align_to and Realign bed files used in the next step for variant calling.
   - **STEP_03:** With the bed files created _Find_variants.py_ must be run in order to create a vcf file with all the mutations detected in regions of high homology.
   - **STEP_04:** Once the last step has finished _Find_hom_zones.py_ can be run to add the 'High_Homology_Region' flag to any variant in a zone that presented high similarity with a pseudogene.
+  - **STEP_05:** Optionally a plot with the quality of each variant like the ones in the manuscript can be made using the script in Images _Plot_results.py_
 
 ![](Images/Scheme.drawio.png)
 
@@ -38,7 +39,7 @@ python Create_beds.py -fp Pseudogene_fasta_file -bl blast_database -OM Align_to_
 python Find_variants.py -I reads.fastq -ID ID_of_the_sample -SM Sample_name -t Number_of_threads -O Output.vcf -real Realign_bed_files_directory -Al_to Align_to_bed_files_directory -R reference.fasta -Qual quality_threshold_for_variants
 ```
 
-  - Additionally, if a boxplot showing the quality of the variants is going to be made the python script Plot_results.py must be run.
+  - Additionally, if a boxplot showing the quality of the variants is going to be made the python script _Plot_results.py_ must be run.
 ```
 python Images/Plot_results.py vcf_file.vcf size_of_the_groups_of_variants title_of_the_graph
 ```
