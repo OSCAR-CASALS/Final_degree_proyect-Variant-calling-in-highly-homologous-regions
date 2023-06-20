@@ -27,7 +27,7 @@ Execute_all.py -R reference_genome.fasta -A annotation.gff3 -I reads.fastq -ID I
 ```
   - If instead the pipeline is going to be executed step by step, here there is an example on how it would be done:
 ```
-Init.sh 
+Init.sh reference_genome annotation.gff3 output_directory 
 ```
 
 ## Dependencies
