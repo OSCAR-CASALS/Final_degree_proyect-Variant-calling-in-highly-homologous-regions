@@ -27,7 +27,11 @@ Execute_all.py -R reference_genome.fasta -A annotation.gff3 -I reads.fastq -ID I
 ```
   - If instead the pipeline is going to be executed step by step, here there is an example on how it would be done:
 ```
-Init.sh reference_genome annotation.gff3 output_directory 
+bash Init.sh reference_genome annotation.gff3 output_directory 
+```
+
+```
+python Create_beds.py -fp Pseudogene_fasta_file -bl blast_database -OM Align_to_bed_files_directory -OR Realign_bed_files_directory -Id_threshold Maximum_identity_threshold_a_region_can_have_to_a_pseudogene -pl ploidy
 ```
 
 ## Dependencies
