@@ -54,12 +54,12 @@ for rea in range(0, len(realign_files)):
     real_to = directory_realign + '/' + realign_files[rea]
     ploidy = str(extract_ploidy(real_to))
     print('Ploidy', ploidy)
+    print('Extracting realign_to regions...')
     os.system('samtools view -h -L ' + real_to + ' ' + TENPORARY_DICT + '/basic_al.bam' + ' | ' + 'samtools view -hb | samtools sort -n -@ ' + args.threads + ' > ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam')
     TEMP_FASTA = TENPORARY_DICT + '/' + 'ploidy_' + ploidy + '.fasta'
     os.system('bedtools bamtofastq -i ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam ' + '-fq ' + TEMP_FASTA)
-    #sys.exit()
     os.system('rm ' + TENPORARY_DICT + '/sorted_bam_' + ploidy + '.bam')
-    #Masking
+    print('Masking and realigning with masked genome...')
     out_c = TENPORARY_DICT + '/' + 'Masked_' + ploidy
     os.system('mkdir ' + out_c)
     TEMPORARY_FILE_MASKED = TENPORARY_DICT + '/' + 'Temporary_masked_ploidy_' + ploidy
@@ -68,13 +68,13 @@ for rea in range(0, len(realign_files)):
     os.system('bwa mem -M -R ' + RG_group + ' ' + '-t ' + args.threads + ' ' + out_c + '/Masked_gen.fasta' + ' ' +  TEMP_FASTA + ' | samtools view -hb | samtools sort -@ ' + args.threads + ' > ' + MASKED_AL)
     os.system('samtools quickcheck ' + MASKED_AL)
     os.system('samtools index ' + MASKED_AL)
-    #Haplotype caller
+    print('Haplotype caller...')
     HAPL_creation = out_c + '/Hapl_' + ploidy + '.g.vcf'
     os.system('gatk HaplotypeCaller -R ' + out_c + '/Masked_gen.fasta ' + '-I ' + MASKED_AL + ' -ERC GVCF --dont-use-soft-clipped-bases -O ' + HAPL_creation + ' -ploidy ' + ploidy)
-    #Genotyping
+    print('Genotyping...')
     GEN_out = TENPORARY_DICT + '/Genotyping_' + ploidy + '.vcf'
     os.system('gatk GenotypeGVCFs -R ' + out_c + '/Masked_gen.fasta ' + '-O ' + GEN_out + ' --variant ' + HAPL_creation + ' -ploidy ' + ploidy + ' -stand-call-conf ' + args.Quality)
-    #Removing files
+    print('Removing files...')
     os.system('rm -r ' + out_c)
 print('Fusing vcfs of all ploidys...')
 os.system('vcf-concat ' + TENPORARY_DICT + '/Genotyping_*.vcf > ' + args.output)
