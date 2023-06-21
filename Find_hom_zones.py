@@ -8,7 +8,7 @@ parser.add_argument('VCF', help = 'VCF files')
 parser.add_argument('Al', help = 'Align_to bed file directory.')
 parser.add_argument('Res', help = 'Output vcf file.')
 args = parser.parse_args()
-
+#This script extracts the regions of the genes that have high homology and adds a flag to the variants in this region.
 hom_regions = []
 directory_align_to = os.listdir(args.Al)
 al_to_dir = args.Al
